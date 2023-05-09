@@ -1,0 +1,34 @@
+.card{
+    height: 540px !important;
+    transition: .3s ease-in-out;
+}
+.card:hover{
+  transform: scaleY(1.03);
+}
+.card-img-top{
+    height: 380px !important;
+}
+.card-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-title{
+    color: rgb(55, 150, 91);
+    font-weight: 600;
+}
+.card-text{
+    color: gray;
+    font-size: 13px;
+    line-height: 18px;
+}
+.prop-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.prop-info span{
+    color: rgb(197, 96, 96);
+    font-size: medium;
+    font-weight: bolder;
+}
