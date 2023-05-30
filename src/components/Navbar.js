@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { FcAbout, FcHome } from "react-icons/fc";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const router = useRouter();
 
   const handleScroll = () => {
     const currentScrollPos = window.pageYOffset;
@@ -27,42 +29,41 @@ const Navbar = () => {
         <div className="d-flex flex-wrap align-items-center justify-content-lg-start ">
           <Image src="/assets/logo.png" width={52} height={42} alt="logo" />
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center  mb-md-0 px-4">
-            <li>
-              <Link href="/" className="nav-link px-2 link-secondary" passHref>
+            <li className={router.pathname == "/" ? "active" : ""}>
+              <Link href="/" className="nav-link px-2 text-black-50" passHref>
                 Dashboard
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                router.pathname == "/search?purpose=for-sale" ? "active" : ""
+              }
+            >
               <Link
-                href="/about"
-                className="nav-link px-2 link-body-emphasis"
+                href="/search?purpose=for-sale"
+                className="nav-link px-2 text-black-50"
                 passHref
               >
-                About
+                Buy Property
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                router.pathname == "/search?purpose=for-rent" ? "active" : ""
+              }
+            >
               <Link
-                href="/contact"
-                className="nav-link px-2 link-body-emphasis"
+                href="/search?purpose=for-rent"
+                className="nav-link px-2 text-black-50"
                 passHref
               >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/location"
-                className="nav-link px-2 link-body-emphasis"
-              >
-                Locations
+                Rent Property
               </Link>
             </li>
           </ul>
 
           <div className="dropdown text-end" style={{ marginLeft: "49rem" }}>
             <a
-              href="#"
               className="d-block link-dark text-decoration-none dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"

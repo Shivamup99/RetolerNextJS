@@ -1,27 +1,29 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { BsFilter } from "react-icons/bs";
-import SearchFilter from "@/components/SearchFilter";
+import { BsSearch } from "react-icons/bs";
 import Property from "@/components/Property";
 import Image from "next/image";
 import { fetchApi, baseUrl } from "@/utils/fetchApi";
 const search = ({ properties }) => {
-  const [searchFilter, setSearchFilter] = useState(false);
+  const [searchFilter, setSearchFilter] = useState();
   const router = useRouter();
   return (
     <>
-      <div className="search">
-        <div
-          className="search-field"
-          onClick={() => setSearchFilter((prevFilters) => !prevFilters)}
-        >
-          Search Property Name By Filter Option
-          <span>
-            <BsFilter />
-          </span>
+      <div className="search-field">
+        <div className="input-group d-flex align-items-center justify-content-center w-100">
+          <div class="form-outline w-25 h-25">
+            <input
+              type="search"
+              id="form1"
+              className="form-control"
+              onChange={(e) => setSearchFilter(e.target.value)}
+            />
+          </div>
+          <button type="button" class="btn btn-primary">
+            <BsSearch />
+          </button>
         </div>
       </div>
-      {searchFilter && <SearchFilter />}
       <div className="prop">
         <h4>Properties {router.query.purpose}</h4>
         <div className="prop-results">

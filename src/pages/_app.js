@@ -1,14 +1,11 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.css";
 import Router from "next/router";
 import Head from "next/head";
 import NProgress from "nprogress";
 import Layout from "../components/Layout";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    import("bootstrap/dist/js/bootstrap.bundle.min.js");
-  }, []);
   NProgress.configure({ showSpinner: false });
   Router.events.on("routeChangeStart", () => {
     NProgress.start();
@@ -16,6 +13,10 @@ export default function App({ Component, pageProps }) {
   Router.events.on("routeChangeComplete", () => {
     NProgress.done();
   });
+
+  useEffect(() => {
+    require("/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
   return (
     <>
       <Head>
